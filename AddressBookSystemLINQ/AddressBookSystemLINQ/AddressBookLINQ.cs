@@ -88,7 +88,22 @@ namespace AddressBookSystemLINQ
             }
         }
 
-
+        /// <summary>
+        ///  Delete Contact using persons's name
+        /// </summary>
+        /// <param name="name"></param>
+        public void DeleteContact(string name)
+        {
+            //Find the first name in dataTable
+            var rowToDelete = dataTable.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals(name)).FirstOrDefault();
+            if (rowToDelete != null)
+            {
+                rowToDelete.Delete();
+                Console.WriteLine("\n\nContact with name '{0}' deleted successfully!\n", name);
+                DisplayDataTable();
+            }
+            
+        }
 
     }
 }

@@ -10,7 +10,8 @@ namespace AddressBookSystemLINQ
             AddressBookLINQ linq = new AddressBookLINQ();
             linq.CreateAddressBook();
             linq.InsertContacts();
-            linq.EditContact();
+            //linq.EditContact();
+            linq.DeleteContact("Edwin");
             
         }
     }
