@@ -102,8 +102,54 @@ namespace AddressBookSystemLINQ
                 Console.WriteLine("\n\nContact with name '{0}' deleted successfully!\n", name);
                 DisplayDataTable();
             }
-            
         }
 
+        /// <summary>
+        ///  Retrieve contacts belonging to a City from the Address Book
+        /// </summary>
+        /// <param name="city"></param>
+        public void RetrieveContactsByCity(string city)
+        {
+            var result = dataTable.AsEnumerable().Where(dr => dr.Field<string>("City") == city);
+            Console.Write("\n\nContacts belonging to '{0}'  city in the Address Book :\n\n", city);
+
+            foreach (DataColumn col in dataTable.Columns)
+            {
+                Console.Write(col.ToString().PadRight(14));
+            }
+            Console.Write("\n");
+            foreach (DataRow row in result)
+            {
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    Console.Write(row[col].ToString().PadRight(14));
+                }
+                Console.Write("\n");
+            }
+        }
+
+        /// <summary>
+        /// Retrieve contacts belonging to a State from the Address Book
+        /// </summary>
+        /// <param name="state"></param>
+        public void RetrieveContactsByState(string state)
+        {
+            var result = dataTable.AsEnumerable().Where(dr => dr.Field<string>("State") == state);
+            Console.Write("\n\nContacts belonging to '{0}' state in the Address Book : \n\n", state);
+
+            foreach (DataColumn col in dataTable.Columns)
+            {
+                Console.Write(col.ToString().PadRight(14));
+            }
+            Console.Write("\n");
+            foreach (DataRow row in result)
+            {
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    Console.Write(row[col].ToString().PadRight(14));
+                }
+                Console.Write("\n");
+            }
+        }
     }
 }

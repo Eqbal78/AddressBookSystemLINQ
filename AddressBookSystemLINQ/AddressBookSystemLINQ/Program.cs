@@ -11,7 +11,10 @@ namespace AddressBookSystemLINQ
             linq.CreateAddressBook();
             linq.InsertContacts();
             //linq.EditContact();
-            linq.DeleteContact("Edwin");
+            //linq.DeleteContact("Edwin");
+
+            linq.RetrieveContactsByCity("Manhattan");
+            linq.RetrieveContactsByState("Texas");
             
         }
     }
