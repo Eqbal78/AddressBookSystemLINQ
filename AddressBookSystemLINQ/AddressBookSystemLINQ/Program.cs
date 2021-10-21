@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Data;
 
 namespace AddressBookSystemLINQ
 {
     class Program
     {
+        private static DataTable dataTable;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book using LINQ!");
@@ -13,9 +16,13 @@ namespace AddressBookSystemLINQ
             //linq.EditContact();
             //linq.DeleteContact("Edwin");
 
-            linq.RetrieveContactsByCity("Manhattan");
-            linq.RetrieveContactsByState("Texas");
-            
+            //linq.RetrieveContactsByCity("Manhattan");
+            //linq.RetrieveContactsByState("Texas");
+
+            //linq.CountByCity();
+            //linq.CountByState();
+
+            linq.CountByStates();
         }
     }
 }

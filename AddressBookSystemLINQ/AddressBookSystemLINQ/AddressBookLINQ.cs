@@ -151,5 +151,46 @@ namespace AddressBookSystemLINQ
                 Console.Write("\n");
             }
         }
+
+        /// <summary>
+        ///  Count contacts by City in the Address Book
+        /// </summary>
+        public void CountByCity()
+        {
+            var query = from row in dataTable.AsEnumerable()
+                        group row by row.Field<string>("City") into city
+                        select new
+                        {
+                           // City = city.Key,
+                            CountOfCity = city.Count()
+                        };
+            Console.WriteLine("\nCount contacts by city in the Address Book :");
+            Console.WriteLine("City\t\tCount");
+            foreach (var CountCity in query)
+            {
+                Console.WriteLine(CountCity.City.PadRight(18) + CountCity.CountOfCity);
+            }
+        }
+
+        /// <summary>
+        ///  Count contacts by State in the Address Book
+        /// </summary>
+        public void CountByState()
+        {
+            var query = from row in dataTable.AsEnumerable()
+                        group row by row.Field<string>("State") into state
+                        select new
+                        {
+                            State = state.Key,
+                            CountOfState = state.Count()
+                        };
+            Console.WriteLine("\nCount contacts by State in the Address Book :");
+            Console.WriteLine("State\t\tCount");
+            foreach (var CountState in query)
+            {
+                Console.WriteLine(CountState.State.PadRight(18) + CountState.CountOfState);
+            }
+        }
+
     }
 }
