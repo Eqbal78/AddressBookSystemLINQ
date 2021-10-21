@@ -67,5 +67,28 @@ namespace AddressBookSystemLINQ
             }
         }
 
+        /// <summary>
+        /// Editing exiting Contact Details using persons's name
+        /// </summary>
+        public void EditContact()
+        {
+            string name = "Tony";
+            //Find the first name in dataTable
+            var rowToUpdate = dataTable.AsEnumerable().Where(x => x.Field<string>("FirstName").Equals(name)).FirstOrDefault();
+            if (rowToUpdate != null)
+            {
+                rowToUpdate.SetField("PhoneNumber", "8300987876");
+                rowToUpdate.SetField("Zip", "534260");
+                Console.WriteLine("\n\nPhoneNumber and ZipCode of {0} updated successfully!\n", name);
+                DisplayDataTable();
+            }
+            else
+            {
+                Console.WriteLine("\nThere is no such record in the Address Book!");
+            }
+        }
+
+
+
     }
 }
