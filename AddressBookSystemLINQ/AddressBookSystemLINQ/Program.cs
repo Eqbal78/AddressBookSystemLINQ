@@ -22,7 +22,7 @@ namespace AddressBookSystemLINQ
             //linq.CountByCity();
             //linq.CountByState();
 
-            linq.CountByStates();
+            linq.SortContactsByNameForAgivenCity("Manhattan");
         }
     }
 }

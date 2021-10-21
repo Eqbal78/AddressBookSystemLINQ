@@ -161,7 +161,7 @@ namespace AddressBookSystemLINQ
                         group row by row.Field<string>("City") into city
                         select new
                         {
-                           // City = city.Key,
+                            City = city.Key,
                             CountOfCity = city.Count()
                         };
             Console.WriteLine("\nCount contacts by city in the Address Book :");
@@ -192,5 +192,22 @@ namespace AddressBookSystemLINQ
             }
         }
 
+        /// <summary>
+        /// Sort Contacts By Name alphabetically for a given City
+        /// </summary>
+        /// <param name="city"></param>
+        public void SortContactsByNameForAgivenCity(string city)
+        {
+            Console.WriteLine("\n\nSorting Contacts By Name alphabetically for a given City :\n");
+            var records = dataTable.AsEnumerable().Where(r => r.Field<string>("City") == city).OrderBy(r => r.Field<string>("FirstName")).ThenBy(r => r.Field<string>("LastName"));
+            foreach (DataRow row in records)
+            {
+                foreach (DataColumn col in dataTable.Columns)
+                {
+                    Console.Write(row[col].ToString().PadRight(14));
+                }
+                Console.Write("\n");
+            }
+        }
     }
 }
